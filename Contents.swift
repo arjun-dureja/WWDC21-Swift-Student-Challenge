@@ -1,21 +1,10 @@
-//: A UIKit based Playground for presenting user interface
-  
 import UIKit
 import PlaygroundSupport
 
-class MyViewController : UIViewController {
-    override func loadView() {
-        let view = UIView()
-        view.backgroundColor = .white
-
-        let label = UILabel()
-        label.frame = CGRect(x: 150, y: 200, width: 200, height: 20)
-        label.text = "Hello World!"
-        label.textColor = .black
-        
-        view.addSubview(label)
-        self.view = view
-    }
-}
-// Present the view controller in the Live View window
-PlaygroundPage.current.liveView = MyViewController()
+//Create view with navigation controller
+let viewRect = CGRect(x: 0, y: 0, width: 770, height: 540)
+let vc = HomeViewController()
+let nc = UINavigationController(rootViewController: vc)
+nc.navigationBar.isHidden = true
+nc.view.frame = viewRect
+PlaygroundPage.current.liveView = nc.view
