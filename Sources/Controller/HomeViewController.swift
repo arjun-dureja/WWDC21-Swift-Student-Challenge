@@ -3,7 +3,7 @@ import PlaygroundSupport
 
 public class HomeViewController: UIViewController {
     var nftTitle: UILabel!
-    var nextButton: UIButton!
+    var nextButton: NextButton!
     var nftDescription: UILabel!
     
     public override func viewDidLoad() {
@@ -11,10 +11,6 @@ public class HomeViewController: UIViewController {
         
         style()
         layout()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.animateNext), userInfo: nil, repeats: true)
-        }
     }
     
     func style() {
@@ -27,18 +23,13 @@ public class HomeViewController: UIViewController {
         nftTitle.translatesAutoresizingMaskIntoConstraints = false
         
         nftDescription = UILabel()
-        nftDescription.text = """
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-        """
+        nftDescription.text = StringConstants.introDescription
         nftDescription.numberOfLines = 0
         nftDescription.font = UIFont.systemFont(ofSize: 26)
         nftDescription.textColor = UIColor(red: 225/255, green: 225/255, blue: 230/255, alpha: 1)
         nftDescription.translatesAutoresizingMaskIntoConstraints = false
         
-        nextButton = UIButton(type: .system)
-        nextButton.setImage(UIImage(systemName: "arrowtriangle.forward.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 40, weight: .bold, scale: .large)), for: .normal)
-        nextButton.tintColor = UIColor(red: 82/255, green: 79/255, blue: 233/255, alpha: 1)
-        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        nextButton = NextButton(type: .system)
         nextButton.addTarget(self, action: #selector(nextPressed), for: .touchUpInside)
     }
     
@@ -72,7 +63,8 @@ public class HomeViewController: UIViewController {
     
     
     @objc func nextPressed() {
-        print("hey")
+        let vc = ETHSmartContractViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
