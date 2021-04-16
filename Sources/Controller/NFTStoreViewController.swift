@@ -1,7 +1,7 @@
 import UIKit
 import PlaygroundSupport
 
-public class ETHSmartContractViewController: UIViewController {
+public class NFTStoreViewController: UIViewController {
     var ethTitle: UILabel!
     var nextButton: NextButton!
     var ethDescription: UILabel!
@@ -17,7 +17,7 @@ public class ETHSmartContractViewController: UIViewController {
         view.backgroundColor = UIColor(red: 29/255, green: 29/255, blue: 64/255, alpha: 1)
         
         ethTitle = UILabel()
-        ethTitle.text = "The Ethereum Blockchain and Smart Contracts"
+        ethTitle.text = "Let's build our own NFT store!"
         ethTitle.font = UIFont.boldSystemFont(ofSize: 34)
         ethTitle.textColor = UIColor(red: 225/255, green: 225/255, blue: 230/255, alpha: 1)
         ethTitle.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +29,7 @@ public class ETHSmartContractViewController: UIViewController {
         ethDescription.textColor = UIColor(red: 225/255, green: 225/255, blue: 230/255, alpha: 1)
         ethDescription.translatesAutoresizingMaskIntoConstraints = false
         
-        nextButton = NextButton(frame: .zero, animationDelay: 10)
+        nextButton = NextButton(frame: .zero, animationDelay: 1)
         nextButton.addTarget(self, action: #selector(nextPressed), for: .touchUpInside)
     }
     
@@ -63,8 +63,7 @@ public class ETHSmartContractViewController: UIViewController {
     
     
     @objc func nextPressed() {
-        let vc = NFTStoreViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        print("hey")
     }
     
 }

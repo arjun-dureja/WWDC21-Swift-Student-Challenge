@@ -29,7 +29,7 @@ public class HomeViewController: UIViewController {
         nftDescription.textColor = UIColor(red: 225/255, green: 225/255, blue: 230/255, alpha: 1)
         nftDescription.translatesAutoresizingMaskIntoConstraints = false
         
-        nextButton = NextButton(type: .system)
+        nextButton = NextButton(frame: .zero, animationDelay: 10)
         nextButton.addTarget(self, action: #selector(nextPressed), for: .touchUpInside)
     }
     
