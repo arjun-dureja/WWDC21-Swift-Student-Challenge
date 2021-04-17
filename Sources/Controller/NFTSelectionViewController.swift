@@ -21,7 +21,7 @@ public class NFTSelectionViewController: UIViewController {
         
         nftTitle = UILabel()
         nftTitle.text = "Let's Mint Our Own NFT!"
-        nftTitle.font = UIFont.boldSystemFont(ofSize: 34)
+        nftTitle.font = UIFont.boldSystemFont(ofSize: 44)
         nftTitle.textColor = .titleColor
         nftTitle.translatesAutoresizingMaskIntoConstraints = false
         
@@ -72,7 +72,7 @@ public class NFTSelectionViewController: UIViewController {
             nftDescription.topAnchor.constraint(equalTo: nftTitle.bottomAnchor, constant: 16),
             nftDescription.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
             
-            emojiStackView.topAnchor.constraint(equalTo: nftDescription.bottomAnchor, constant: 64),
+            emojiStackView.topAnchor.constraint(equalTo: nftDescription.bottomAnchor, constant: 40),
             emojiStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 72),
             emojiStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -72),
             

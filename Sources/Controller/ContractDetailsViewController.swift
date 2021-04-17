@@ -1,12 +1,11 @@
 import UIKit
 import PlaygroundSupport
 
-public class CreateContractViewController: UIViewController {
+public class ContractDetailsViewController: UIViewController {
     var contractTitle: UILabel!
     var nextButton: NextButton!
     var contractDescription: UILabel!
     var selectedEmoji = ""
-    var codeImage: UIImageView!
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,18 +25,12 @@ public class CreateContractViewController: UIViewController {
         contractTitle.translatesAutoresizingMaskIntoConstraints = false
         
         contractDescription = UILabel()
-        contractDescription.text = StringConstants.createSmartContractDescription
+        contractDescription.text = StringConstants.contractDetailsDescription
         contractDescription.numberOfLines = 0
         contractDescription.font = UIFont.systemFont(ofSize: 22)
         contractDescription.textColor = .paragraphColor
         contractDescription.translatesAutoresizingMaskIntoConstraints = false
-        
-        codeImage = UIImageView()
-        codeImage.image = UIImage(named: "erc721.png")
-        codeImage.layer.cornerRadius = 8
-        codeImage.layer.masksToBounds = true
-        codeImage.translatesAutoresizingMaskIntoConstraints = false
-        
+
         nextButton = NextButton(frame: .zero, animationDelay: 10)
         nextButton.addTarget(self, action: #selector(nextPressed), for: .touchUpInside)
     }
@@ -45,7 +38,6 @@ public class CreateContractViewController: UIViewController {
     func layout() {
         view.addSubview(contractTitle)
         view.addSubview(contractDescription)
-        view.addSubview(codeImage)
         view.addSubview(nextButton)
         
         NSLayoutConstraint.activate([
@@ -56,11 +48,6 @@ public class CreateContractViewController: UIViewController {
             contractDescription.topAnchor.constraint(equalTo: contractTitle.bottomAnchor, constant: 16),
             contractDescription.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
             
-            codeImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
-            codeImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-            codeImage.widthAnchor.constraint(equalToConstant: 550),
-            codeImage.heightAnchor.constraint(equalToConstant: 300),
-            
             nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32),
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
         ])
@@ -68,7 +55,7 @@ public class CreateContractViewController: UIViewController {
     
     
     @objc func nextPressed() {
-        let vc = ContractDetailsViewController()
+        let vc = CreateContractViewController()
         vc.selectedEmoji = self.selectedEmoji
         navigationController?.pushViewController(vc, animated: true)
     }

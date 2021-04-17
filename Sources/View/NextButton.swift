@@ -7,7 +7,7 @@ public class NextButton: UIButton {
     
     public init(frame: CGRect, animationDelay: Int) {
         super.init(frame: frame)
-        self.setImage(UIImage(systemName: "arrowtriangle.forward.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 40, weight: .bold, scale: .large)), for: .normal)
+        self.setImage(UIImage(systemName: "arrow.right.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 40, weight: .bold, scale: .large)), for: .normal)
         self.tintColor = .buttonColor
         self.translatesAutoresizingMaskIntoConstraints = false
         if animationDelay == 0 { return }
