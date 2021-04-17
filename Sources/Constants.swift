@@ -18,7 +18,7 @@ public enum StringConstants {
         Great choice! Now we need to build a Smart Contract for the NFT. Below is the interface for the ERC-721 standard. Don't worry, it's not that complicated! We simply need to provide details about the NFT and its owner, which we will provide next.
         """
     static let contractDetailsDescription = """
-        Please provide the following details:
+        The values you need to set are the token name and the token symbol. These will be shown to anyone looking up your NFT in the blockchain. To ensure the contract is unique, we will also need to provide a token address and token ID. The address is automatically generated for you with the use of cryptographic algorithms, and the ID is a random integer. Lastly, there needs to be metadata associated with the NFT, this could be anything that describes the token, in our case it will contain an emoji. Once all the values are set, go ahead and tap the Create Contract button.\n\nNFT Values                  \u{200c}Unique Identifers                  \u{200c}Metadata
         """
 }
 

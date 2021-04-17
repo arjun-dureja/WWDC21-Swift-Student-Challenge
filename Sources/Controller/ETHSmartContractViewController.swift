@@ -25,7 +25,7 @@ public class ETHSmartContractViewController: UIViewController {
         ethDescription = UILabel()
         ethDescription.text = StringConstants.ethSmartContractsDescription
         ethDescription.numberOfLines = 0
-        ethDescription.font = UIFont.systemFont(ofSize: 26)
+        ethDescription.font = UIFont.systemFont(ofSize: 25)
         ethDescription.textColor = .paragraphColor
         ethDescription.translatesAutoresizingMaskIntoConstraints = false
         
