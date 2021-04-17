@@ -102,7 +102,9 @@ public class NFTSelectionViewController: UIViewController {
     }
     
     @objc func nextPressed() {
-        print(selectedEmoji!)
+        let vc = CreateContractViewController()
+        vc.selectedEmoji = self.selectedEmoji!
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

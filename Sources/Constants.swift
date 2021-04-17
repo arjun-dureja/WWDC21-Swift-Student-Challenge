@@ -14,6 +14,9 @@ public enum StringConstants {
     static let nftSelectionIntro = """
         We can now start minting our own NFT! For the purpose of this demonstration, we'll be using an emoji. Typically, an NFT should be something completely unique that you've created, it just needs to be digital.\n\nPlease select an emoji to get started:
         """
+    static let createSmartContractDescription = """
+        Great choice! 
+        """
 }
 
 // Colors used throughout the playground
