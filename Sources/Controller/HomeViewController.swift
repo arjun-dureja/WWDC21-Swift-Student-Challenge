@@ -14,35 +14,25 @@ public class HomeViewController: UIViewController {
     }
     
     func style() {
-        view.backgroundColor = UIColor(red: 29/255, green: 29/255, blue: 64/255, alpha: 1)
+        view.backgroundColor = .backgroundColor
         
         nftTitle = UILabel()
         nftTitle.text = "Non-Fungible Tokens"
         nftTitle.font = UIFont.boldSystemFont(ofSize: 44)
-        nftTitle.textColor = UIColor(red: 225/255, green: 225/255, blue: 230/255, alpha: 1)
+        nftTitle.textColor = .titleColor
         nftTitle.translatesAutoresizingMaskIntoConstraints = false
         
         nftDescription = UILabel()
         nftDescription.text = StringConstants.introDescription
         nftDescription.numberOfLines = 0
         nftDescription.font = UIFont.systemFont(ofSize: 26)
-        nftDescription.textColor = UIColor(red: 225/255, green: 225/255, blue: 230/255, alpha: 1)
+        nftDescription.textColor = .paragraphColor
         nftDescription.translatesAutoresizingMaskIntoConstraints = false
         
         nextButton = NextButton(frame: .zero, animationDelay: 10)
         nextButton.addTarget(self, action: #selector(nextPressed), for: .touchUpInside)
     }
-    
-    @objc func animateNext() {
-        UIView.animate(withDuration: 0.75, delay: 0.0, options: [.allowUserInteraction], animations: {
-            self.nextButton.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        }, completion: { _ in
-            UIView.animate(withDuration: 0.75, delay: 0.0, options: [.allowUserInteraction]) {
-                self.nextButton.transform = CGAffineTransform(scaleX: 1, y: 1)
-            }
-        })
-    }
-    
+
     func layout() {
         view.addSubview(nextButton)
         view.addSubview(nftDescription)

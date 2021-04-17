@@ -14,33 +14,23 @@ public class ETHSmartContractViewController: UIViewController {
     }
     
     func style() {
-        view.backgroundColor = UIColor(red: 29/255, green: 29/255, blue: 64/255, alpha: 1)
+        view.backgroundColor = .backgroundColor
         
         ethTitle = UILabel()
         ethTitle.text = "The Ethereum Blockchain and Smart Contracts"
         ethTitle.font = UIFont.boldSystemFont(ofSize: 34)
-        ethTitle.textColor = UIColor(red: 225/255, green: 225/255, blue: 230/255, alpha: 1)
+        ethTitle.textColor = .titleColor
         ethTitle.translatesAutoresizingMaskIntoConstraints = false
         
         ethDescription = UILabel()
         ethDescription.text = StringConstants.ethSmartContractsDescription
         ethDescription.numberOfLines = 0
         ethDescription.font = UIFont.systemFont(ofSize: 26)
-        ethDescription.textColor = UIColor(red: 225/255, green: 225/255, blue: 230/255, alpha: 1)
+        ethDescription.textColor = .paragraphColor
         ethDescription.translatesAutoresizingMaskIntoConstraints = false
         
         nextButton = NextButton(frame: .zero, animationDelay: 10)
         nextButton.addTarget(self, action: #selector(nextPressed), for: .touchUpInside)
-    }
-    
-    @objc func animateNext() {
-        UIView.animate(withDuration: 0.75, delay: 0.0, options: [.allowUserInteraction], animations: {
-            self.nextButton.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        }, completion: { _ in
-            UIView.animate(withDuration: 0.75, delay: 0.0, options: [.allowUserInteraction]) {
-                self.nextButton.transform = CGAffineTransform(scaleX: 1, y: 1)
-            }
-        })
     }
     
     func layout() {
@@ -63,7 +53,7 @@ public class ETHSmartContractViewController: UIViewController {
     
     
     @objc func nextPressed() {
-        let vc = NFTStoreViewController()
+        let vc = NFTSelectionViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
