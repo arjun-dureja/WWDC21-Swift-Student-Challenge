@@ -46,6 +46,8 @@ public class ContractDetailsViewController: UIViewController {
         contractDescription.translatesAutoresizingMaskIntoConstraints = false
         
         tokenName = NFTTextField(frame: .zero, placeholder: "Name")
+        tokenName.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
         tokenSymbol = NFTTextField(frame: .zero, placeholder: "Symbol")
         
         generateAddressButton = NFTButton(type: .system)
@@ -68,8 +70,8 @@ public class ContractDetailsViewController: UIViewController {
         metadataLabel = UILabel()
         metadataLabel.text = """
             {
-                "name": "test"
-                "id": "12"
+                "name": ""
+                "id": ""
                 "emoji": "\(selectedEmoji)"
             }
             """
@@ -77,7 +79,7 @@ public class ContractDetailsViewController: UIViewController {
         metadataLabel.textColor = .metadataColor
         metadataLabel.numberOfLines = 0
         metadataLabel.translatesAutoresizingMaskIntoConstraints = false
-    
+        
         nextButton = NextButton(frame: .zero, animationDelay: 0)
         nextButton.stopAnimating()
         nextButton.addTarget(self, action: #selector(nextPressed), for: .touchUpInside)
@@ -119,14 +121,24 @@ public class ContractDetailsViewController: UIViewController {
             generateIDButton.leadingAnchor.constraint(equalTo: tokenName.trailingAnchor, constant: 56),
             
             metadataLabel.topAnchor.constraint(equalTo: contractDescription.bottomAnchor, constant: 16),
-            metadataLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -176),
+            metadataLabel.leadingAnchor.constraint(equalTo: tokenName.trailingAnchor, constant: 304),
             
-            createContractButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -24),
+            createContractButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32),
             createContractButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             
-            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -24),
+            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32),
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
         ])
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        metadataLabel.text = """
+            {
+                "name": "\(textField.text ?? "")"
+                "id": ""
+                "emoji": "\(selectedEmoji)"
+            }
+            """
     }
     
     @objc func generateAddressPressed() {
@@ -146,6 +158,14 @@ public class ContractDetailsViewController: UIViewController {
         generateIDButton.isUserInteractionEnabled = false
         generateIDButton.topAnchor.constraint(equalTo: generateAddressButton.bottomAnchor, constant: 8).isActive = true
         generateIDButton.leadingAnchor.constraint(equalTo: tokenName.trailingAnchor, constant: 48).isActive = true
+        
+        metadataLabel.text = """
+            {
+                "name": "\(tokenName.text ?? "")"
+                "id": "23"
+                "emoji": "\(selectedEmoji)"
+            }
+            """
         
         createContractButton.isUserInteractionEnabled = true
         createContractButton.backgroundColor = .buttonColor
