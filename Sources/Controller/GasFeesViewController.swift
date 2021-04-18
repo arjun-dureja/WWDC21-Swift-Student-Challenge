@@ -41,7 +41,7 @@ public class GasFeesViewController: UIViewController {
         gasFeesProgressView.setProgress(0.95, animated: false)
         gasFeesProgressView.progressLabel.text = "95%"
         
-        nextButton = NextButton(frame: .zero, animationDelay: 10)
+        nextButton = NextButton(frame: .zero, animationDelay: 0)
         nextButton.stopAnimating()
         nextButton.addTarget(self, action: #selector(nextPressed), for: .touchUpInside)
     }

@@ -33,11 +33,13 @@ public class NFTProgressView: UIProgressView {
     public func animate(from startingVal: Int, to value: Float, duration: Double) {
         self.endVal = Int(value*100)
         self.currentProgress = startingVal
+        
         UIView.animate(withDuration: duration, animations: { () -> Void in
             self.setProgress(value, animated: true)
         })
+        
         DispatchQueue.main.async {
-            self.progressTimer = Timer.scheduledTimer(timeInterval: duration/Double(Int(value)*100 - startingVal), target: self, selector: #selector(self.updateProgressLabel), userInfo: nil, repeats: true)
+            self.progressTimer = Timer.scheduledTimer(timeInterval: duration/Double(self.endVal - startingVal), target: self, selector: #selector(self.updateProgressLabel), userInfo: nil, repeats: true)
         }
     }
     
