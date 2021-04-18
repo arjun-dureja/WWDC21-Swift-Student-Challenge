@@ -11,6 +11,7 @@ public class ContractDetailsViewController: UIViewController {
     var tokenSymbol: NFTTextField!
     var generateAddressButton: NFTButton!
     var generateIDButton: NFTButton!
+    var id: String?
     var metadataLabel: UILabel!
     var createContractButton: NFTButton!
     var contractProgressView: UIProgressView!
@@ -165,7 +166,7 @@ public class ContractDetailsViewController: UIViewController {
         metadataLabel.text = """
             {
                 "name": "\(textField.text ?? "")"
-                "id": ""
+                "id": "\(id ?? "")"
                 "emoji": "\(selectedEmoji)"
             }
             """
@@ -173,7 +174,7 @@ public class ContractDetailsViewController: UIViewController {
     
     @objc func generateAddressPressed() {
         generateAddressButton.backgroundColor = .clear
-        generateAddressButton.setTitleColor(.titleColor, for: .normal)
+        generateAddressButton.setTitleColor(.paragraphColor, for: .normal)
         generateAddressButton.setTitle("0x89205A3A3b2A69De6D\nbf7f01ED13B2108B2c43e7", for: .normal)
         generateAddressButton.titleLabel?.numberOfLines = 0
         generateAddressButton.isUserInteractionEnabled = false
@@ -182,9 +183,10 @@ public class ContractDetailsViewController: UIViewController {
     }
     
     @objc func generateIDPressed() {
+        id = "24"
         generateIDButton.backgroundColor = .clear
-        generateIDButton.setTitleColor(.titleColor, for: .normal)
-        generateIDButton.setTitle("23", for: .normal)
+        generateIDButton.setTitleColor(.paragraphColor, for: .normal)
+        generateIDButton.setTitle("\(id!)", for: .normal)
         generateIDButton.isUserInteractionEnabled = false
         generateIDButton.topAnchor.constraint(equalTo: generateAddressButton.bottomAnchor, constant: 8).isActive = true
         generateIDButton.leadingAnchor.constraint(equalTo: tokenName.trailingAnchor, constant: 48).isActive = true
@@ -192,7 +194,7 @@ public class ContractDetailsViewController: UIViewController {
         metadataLabel.text = """
             {
                 "name": "\(tokenName.text ?? "")"
-                "id": "23"
+                "id": "\(id!)"
                 "emoji": "\(selectedEmoji)"
             }
             """
@@ -201,9 +203,23 @@ public class ContractDetailsViewController: UIViewController {
         createContractButton.backgroundColor = .buttonColor
     }
     
+    func validateInput() -> Bool {
+        return (tokenName.text?.count)! > 0 &&
+            (tokenSymbol.text?.count)! > 0 &&
+            ((generateAddressButton.titleLabel?.text?.hasPrefix("0")) != nil)
+    }
+    
     @objc func createContractPressed() {
+        if !validateInput() {
+            let ac = UIAlertController(title: "Please Complete All Sections", message: "", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+            return
+        }
         createContractButton.isUserInteractionEnabled = false
         createContractButton.backgroundColor = .gray
+        tokenName.isUserInteractionEnabled = false
+        tokenSymbol.isUserInteractionEnabled = false
         UIView.animate(withDuration: 5, animations: { () -> Void in
             self.contractProgressView.setProgress(0.95, animated: true)
         })
@@ -217,10 +233,12 @@ public class ContractDetailsViewController: UIViewController {
         self.progressLabel.text = "\(currentProgress)%"
         if (currentProgress == 95) {
             progressTimer?.invalidate()
-            contractProgressView.progressTintColor = .errorRed
-            progressLabel.text = "Stop! You must pay gas fees to continue..."
-            progressLabel.textColor = .titleColor
-            nextButton.startAnimating()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.contractProgressView.progressTintColor = .errorRed
+                self.progressLabel.text = "Stop! You must pay gas fees to continue..."
+                self.progressLabel.textColor = .paragraphColor
+                self.nextButton.startAnimating()
+            }
         }
     }
     

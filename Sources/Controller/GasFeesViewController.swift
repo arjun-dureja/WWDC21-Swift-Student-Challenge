@@ -18,7 +18,7 @@ public class GasFeesViewController: UIViewController {
         view.backgroundColor = .backgroundColor
         
         ethTitle = UILabel()
-        ethTitle.text = "The Ethereum Blockchain and Smart Contracts"
+        ethTitle.text = "Ethereum Gas Fees"
         ethTitle.font = UIFont.boldSystemFont(ofSize: 34)
         ethTitle.textColor = .titleColor
         ethTitle.translatesAutoresizingMaskIntoConstraints = false

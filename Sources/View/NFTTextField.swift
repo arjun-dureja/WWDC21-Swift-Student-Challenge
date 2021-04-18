@@ -13,7 +13,7 @@ public class NFTTextField: UITextField {
         self.leftView = paddingView
         self.leftViewMode = .always
         self.backgroundColor = .textfieldBG
-        self.textColor = .titleColor
+        self.textColor = .paragraphColor
         self.layer.cornerRadius = 8
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.buttonColor.cgColor

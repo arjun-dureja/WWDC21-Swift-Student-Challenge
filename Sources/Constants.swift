@@ -25,7 +25,7 @@ public enum StringConstants {
 // Colors used throughout the playground
 extension UIColor {
     static var backgroundColor: UIColor { return UIColor(red: 29/255, green: 29/255, blue: 64/255, alpha: 1) }
-    static var titleColor: UIColor { return UIColor(red: 225/255, green: 225/255, blue: 230/255, alpha: 1) }
+    static var titleColor: UIColor { return .white }
     static  var paragraphColor: UIColor { return UIColor(red: 225/255, green: 225/255, blue: 230/255, alpha: 1) }
     static var buttonColor: UIColor { return UIColor(red: 82/255, green: 79/255, blue: 233/255, alpha: 1) }
     static var textfieldBG: UIColor { return UIColor(red: 20/255, green: 20/255, blue: 49/255, alpha: 1) }
