@@ -116,7 +116,7 @@ public class ContractDetailsViewController: UIViewController {
             generateAddressButton.leadingAnchor.constraint(equalTo: tokenName.trailingAnchor, constant: 56),
             
             generateIDButton.topAnchor.constraint(equalTo: generateAddressButton.bottomAnchor, constant: 16),
-            generateIDButton.leadingAnchor.constraint(equalTo: generateAddressButton.leadingAnchor),
+            generateIDButton.leadingAnchor.constraint(equalTo: tokenName.trailingAnchor, constant: 56),
             
             metadataLabel.topAnchor.constraint(equalTo: contractDescription.bottomAnchor, constant: 16),
             metadataLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -176),
@@ -136,6 +136,7 @@ public class ContractDetailsViewController: UIViewController {
         generateAddressButton.titleLabel?.numberOfLines = 0
         generateAddressButton.isUserInteractionEnabled = false
         generateAddressButton.topAnchor.constraint(equalTo: contractDescription.bottomAnchor, constant: 8).isActive = true
+        generateAddressButton.leadingAnchor.constraint(equalTo: tokenName.trailingAnchor, constant: 48).isActive = true
     }
     
     @objc func generateIDPressed() {
@@ -144,6 +145,7 @@ public class ContractDetailsViewController: UIViewController {
         generateIDButton.setTitle("23", for: .normal)
         generateIDButton.isUserInteractionEnabled = false
         generateIDButton.topAnchor.constraint(equalTo: generateAddressButton.bottomAnchor, constant: 8).isActive = true
+        generateIDButton.leadingAnchor.constraint(equalTo: tokenName.trailingAnchor, constant: 48).isActive = true
         
         createContractButton.isUserInteractionEnabled = true
         createContractButton.backgroundColor = .buttonColor

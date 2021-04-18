@@ -7,7 +7,7 @@ public class NFTTextField: UITextField {
         super.init(frame: frame)
         self.placeholder = placeholder
         if let pholder = self.placeholder {
-            self.attributedPlaceholder = NSAttributedString(string: pholder, attributes: [NSAttributedString.Key.foregroundColor: .placeholderColor])
+            self.attributedPlaceholder = NSAttributedString(string: pholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.placeholderColor])
         }
         let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
         self.leftView = paddingView
