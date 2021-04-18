@@ -14,10 +14,7 @@ public class ContractDetailsViewController: UIViewController {
     var id: String?
     var metadataLabel: UILabel!
     var createContractButton: NFTButton!
-    var contractProgressView: UIProgressView!
-    var progressLabel: UILabel!
-    var currentProgress = 0
-    var progressTimer: Timer?
+    var contractProgressView: NFTProgressView!
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,20 +82,7 @@ public class ContractDetailsViewController: UIViewController {
         createContractButton.backgroundColor = .gray
         createContractButton.addTarget(self, action: #selector(createContractPressed), for: .touchUpInside)
         
-        contractProgressView = UIProgressView(progressViewStyle: .bar)
-        contractProgressView.trackTintColor = .textfieldBG
-        contractProgressView.progressTintColor = .metadataColor
-        contractProgressView.layer.borderWidth = 1
-        contractProgressView.layer.borderColor = UIColor.buttonColor.cgColor
-        contractProgressView.layer.cornerRadius = 8
-        contractProgressView.layer.masksToBounds = true
-        contractProgressView.translatesAutoresizingMaskIntoConstraints = false
-        
-        progressLabel = UILabel()
-        progressLabel.text = "0%"
-        progressLabel.font = UIFont.boldSystemFont(ofSize: 16)
-        progressLabel.textColor = .backgroundColor
-        progressLabel.translatesAutoresizingMaskIntoConstraints = false
+        contractProgressView = NFTProgressView(progressViewStyle: .bar)
         
         nextButton = NextButton(frame: .zero, animationDelay: 0)
         nextButton.stopAnimating()
@@ -116,8 +100,6 @@ public class ContractDetailsViewController: UIViewController {
         view.addSubview(createContractButton)
         view.addSubview(contractProgressView)
         view.addSubview(nextButton)
-        
-        contractProgressView.addSubview(progressLabel)
         
         NSLayoutConstraint.activate([
             contractTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 32),
@@ -153,9 +135,6 @@ public class ContractDetailsViewController: UIViewController {
             contractProgressView.leadingAnchor.constraint(equalTo: createContractButton.trailingAnchor, constant: 16),
             contractProgressView.widthAnchor.constraint(equalToConstant: 375),
             contractProgressView.heightAnchor.constraint(equalToConstant: 35),
-            
-            progressLabel.centerYAnchor.constraint(equalTo: contractProgressView.centerYAnchor),
-            progressLabel.leadingAnchor.constraint(equalTo: contractProgressView.leadingAnchor, constant: 12),
             
             nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32),
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
@@ -220,25 +199,12 @@ public class ContractDetailsViewController: UIViewController {
         createContractButton.backgroundColor = .gray
         tokenName.isUserInteractionEnabled = false
         tokenSymbol.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 5, animations: { () -> Void in
-            self.contractProgressView.setProgress(0.95, animated: true)
-        })
-        DispatchQueue.main.async {
-            self.progressTimer = Timer.scheduledTimer(timeInterval: 5/95, target: self, selector: #selector(self.updateProgressLabel), userInfo: nil, repeats: true)
-        }
-    }
-    
-    @objc func updateProgressLabel() {
-        currentProgress += 1
-        self.progressLabel.text = "\(currentProgress)%"
-        if (currentProgress == 95) {
-            progressTimer?.invalidate()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.contractProgressView.progressTintColor = .errorRed
-                self.progressLabel.text = "Stop! You must pay gas fees to continue..."
-                self.progressLabel.textColor = .paragraphColor
-                self.nextButton.startAnimating()
-            }
+        self.contractProgressView.animate(from: 0, to: 0.95, duration: 5)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) {
+            self.contractProgressView.progressTintColor = .errorRed
+            self.contractProgressView.progressLabel.text = "Stop! You must pay gas fees to continue..."
+            self.contractProgressView.progressLabel.textColor = .paragraphColor
+            self.nextButton.startAnimating()
         }
     }
     

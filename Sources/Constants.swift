@@ -20,13 +20,16 @@ public enum StringConstants {
     static let contractDetailsDescription = """
         The values you need to set are the token name and the token symbol. These will be shown to anyone looking up your NFT in the blockchain. To ensure the contract is unique, we will also need to provide a token address and token ID. The address is automatically generated for you with the use of cryptographic algorithms, and the ID is a random integer. Lastly, there needs to be metadata associated with the NFT, this could be anything that describes the token, in our case it will contain an emoji. Once all the values are set, go ahead and tap the Create Contract button.\n\nNFT Values                    \u{200c}Unique Identifers                     \u{200c}Metadata
         """
+    static let gasDescription = """
+        Unfortunately, minting an NFT is not free. Since the Smart Contract is stored directly on the blockchain, there is a fee you need to pay for the computational power. The amount of computation needed is called "gas". The price for gas varies depending on the current traffic on the blockchain. As of April 2021, it could cost as much as $1000 to create a single Smart Contract! The price is increasing every day as NFTs become more popular. There are clever solutions to this problem however, such as using a different blockchain, or only storing a URL to the NFT rather than the whole NFT itself so that less gas is needed.\n\nThe fees are paid in Ethereum using a wallet of your choice - we will be using a simulated one. Please tap the button below to pay the fees and deploy the contract.
+        """
 }
 
 // Colors used throughout the playground
 extension UIColor {
     static var backgroundColor: UIColor { return UIColor(red: 29/255, green: 29/255, blue: 64/255, alpha: 1) }
     static var titleColor: UIColor { return .white }
-    static  var paragraphColor: UIColor { return UIColor(red: 225/255, green: 225/255, blue: 230/255, alpha: 1) }
+    static var paragraphColor: UIColor { return UIColor(red: 225/255, green: 225/255, blue: 230/255, alpha: 1) }
     static var buttonColor: UIColor { return UIColor(red: 82/255, green: 79/255, blue: 233/255, alpha: 1) }
     static var textfieldBG: UIColor { return UIColor(red: 20/255, green: 20/255, blue: 49/255, alpha: 1) }
     static var placeholderColor: UIColor { return UIColor(red: 81/255, green: 81/255, blue: 102/255, alpha: 1) }
