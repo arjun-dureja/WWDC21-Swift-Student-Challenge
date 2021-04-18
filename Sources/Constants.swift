@@ -31,4 +31,5 @@ extension UIColor {
     static var textfieldBG: UIColor { return UIColor(red: 20/255, green: 20/255, blue: 49/255, alpha: 1) }
     static var placeholderColor: UIColor { return UIColor(red: 81/255, green: 81/255, blue: 102/255, alpha: 1) }
     static var metadataColor: UIColor { return UIColor(red: 113/255, green: 206/255, blue: 154/255, alpha: 1) }
+    static var errorRed: UIColor { return UIColor(red: 111/255, green: 2/255, blue: 10/255, alpha: 1) }
 }

@@ -13,6 +13,10 @@ public class ContractDetailsViewController: UIViewController {
     var generateIDButton: NFTButton!
     var metadataLabel: UILabel!
     var createContractButton: NFTButton!
+    var contractProgressView: UIProgressView!
+    var progressLabel: UILabel!
+    var currentProgress = 0
+    var progressTimer: Timer?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,13 +64,6 @@ public class ContractDetailsViewController: UIViewController {
         generateIDButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         generateIDButton.addTarget(self, action: #selector(generateIDPressed), for: .touchUpInside)
         
-        createContractButton = NFTButton(type: .system)
-        createContractButton.setTitle("Create Contract", for: .normal)
-        createContractButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 22)
-        createContractButton.isUserInteractionEnabled = false
-        createContractButton.backgroundColor = .gray
-        createContractButton.addTarget(self, action: #selector(createContractPressed), for: .touchUpInside)
-        
         metadataLabel = UILabel()
         metadataLabel.text = """
             {
@@ -79,6 +76,28 @@ public class ContractDetailsViewController: UIViewController {
         metadataLabel.textColor = .metadataColor
         metadataLabel.numberOfLines = 0
         metadataLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        createContractButton = NFTButton(type: .system)
+        createContractButton.setTitle("Create Contract", for: .normal)
+        createContractButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 22)
+        createContractButton.isUserInteractionEnabled = false
+        createContractButton.backgroundColor = .gray
+        createContractButton.addTarget(self, action: #selector(createContractPressed), for: .touchUpInside)
+        
+        contractProgressView = UIProgressView(progressViewStyle: .bar)
+        contractProgressView.trackTintColor = .textfieldBG
+        contractProgressView.progressTintColor = .metadataColor
+        contractProgressView.layer.borderWidth = 1
+        contractProgressView.layer.borderColor = UIColor.buttonColor.cgColor
+        contractProgressView.layer.cornerRadius = 8
+        contractProgressView.layer.masksToBounds = true
+        contractProgressView.translatesAutoresizingMaskIntoConstraints = false
+        
+        progressLabel = UILabel()
+        progressLabel.text = "0%"
+        progressLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        progressLabel.textColor = .backgroundColor
+        progressLabel.translatesAutoresizingMaskIntoConstraints = false
         
         nextButton = NextButton(frame: .zero, animationDelay: 0)
         nextButton.stopAnimating()
@@ -94,7 +113,10 @@ public class ContractDetailsViewController: UIViewController {
         view.addSubview(generateIDButton)
         view.addSubview(metadataLabel)
         view.addSubview(createContractButton)
+        view.addSubview(contractProgressView)
         view.addSubview(nextButton)
+        
+        contractProgressView.addSubview(progressLabel)
         
         NSLayoutConstraint.activate([
             contractTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 32),
@@ -125,6 +147,14 @@ public class ContractDetailsViewController: UIViewController {
             
             createContractButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32),
             createContractButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+            
+            contractProgressView.topAnchor.constraint(equalTo: createContractButton.topAnchor),
+            contractProgressView.leadingAnchor.constraint(equalTo: createContractButton.trailingAnchor, constant: 16),
+            contractProgressView.widthAnchor.constraint(equalToConstant: 375),
+            contractProgressView.heightAnchor.constraint(equalToConstant: 35),
+            
+            progressLabel.centerYAnchor.constraint(equalTo: contractProgressView.centerYAnchor),
+            progressLabel.leadingAnchor.constraint(equalTo: contractProgressView.leadingAnchor, constant: 12),
             
             nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32),
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
@@ -172,11 +202,30 @@ public class ContractDetailsViewController: UIViewController {
     }
     
     @objc func createContractPressed() {
-        
+        createContractButton.isUserInteractionEnabled = false
+        createContractButton.backgroundColor = .gray
+        UIView.animate(withDuration: 5, animations: { () -> Void in
+            self.contractProgressView.setProgress(0.95, animated: true)
+        })
+        DispatchQueue.main.async {
+            self.progressTimer = Timer.scheduledTimer(timeInterval: 5/95, target: self, selector: #selector(self.updateProgressLabel), userInfo: nil, repeats: true)
+        }
+    }
+    
+    @objc func updateProgressLabel() {
+        currentProgress += 1
+        self.progressLabel.text = "\(currentProgress)%"
+        if (currentProgress == 95) {
+            progressTimer?.invalidate()
+            contractProgressView.progressTintColor = .errorRed
+            progressLabel.text = "Stop! You must pay gas fees to continue..."
+            progressLabel.textColor = .titleColor
+            nextButton.startAnimating()
+        }
     }
     
     @objc func nextPressed() {
-        let vc = CreateContractViewController()
+        let vc = GasFeesViewController()
         vc.selectedEmoji = self.selectedEmoji
         navigationController?.pushViewController(vc, animated: true)
     }
