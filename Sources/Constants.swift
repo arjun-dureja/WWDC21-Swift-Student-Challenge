@@ -18,7 +18,7 @@ public enum StringConstants {
         Great choice! Now we need to build a Smart Contract for the NFT. Below is the interface for the ERC-721 standard. Don't worry, it's not that complicated! We simply need to provide details about the NFT and its owner, which we will provide next.
         """
     static let contractDetailsDescription = """
-        The values you need to set are the token name and the token symbol. These will be shown to anyone looking up your NFT in the blockchain. To ensure the contract is unique, we will also need to provide a token address and token ID. The address is automatically generated for you with the use of cryptographic algorithms, and the ID is a random integer. Lastly, there needs to be metadata associated with the NFT, this could be anything that describes the token, in our case it will contain an emoji. Once all the values are set, go ahead and tap the Create Contract button.\n\nNFT Values                  \u{200c}Unique Identifers                  \u{200c}Metadata
+        The values you need to set are the token name and the token symbol. These will be shown to anyone looking up your NFT in the blockchain. To ensure the contract is unique, we will also need to provide a token address and token ID. The address is automatically generated for you with the use of cryptographic algorithms, and the ID is a random integer. Lastly, there needs to be metadata associated with the NFT, this could be anything that describes the token, in our case it will contain an emoji. Once all the values are set, go ahead and tap the Create Contract button.\n\nNFT Values                      \u{200c}Unique Identifers                       \u{200c}Metadata
         """
 }
 
@@ -28,4 +28,7 @@ extension UIColor {
     static var titleColor: UIColor { return UIColor(red: 225/255, green: 225/255, blue: 230/255, alpha: 1) }
     static  var paragraphColor: UIColor { return UIColor(red: 225/255, green: 225/255, blue: 230/255, alpha: 1) }
     static var buttonColor: UIColor { return UIColor(red: 82/255, green: 79/255, blue: 233/255, alpha: 1) }
+    static var textfieldBG: UIColor { return UIColor(red: 20/255, green: 20/255, blue: 49/255, alpha: 1) }
+    static var placeholderColor: UIColor { return UIColor(red: 81/255, green: 81/255, blue: 102/255, alpha: 1) }
+    static var metadataColor: UIColor { return UIColor(red: 113/255, green: 206/255, blue: 154/255, alpha: 1) }
 }

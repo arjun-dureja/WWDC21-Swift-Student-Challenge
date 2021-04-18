@@ -74,7 +74,7 @@ public class ContractDetailsViewController: UIViewController {
             }
             """
         metadataLabel.font = UIFont.systemFont(ofSize: 14)
-        metadataLabel.textColor = UIColor(red: 113/255, green: 206/255, blue: 154/255, alpha: 1)
+        metadataLabel.textColor = .metadataColor
         metadataLabel.numberOfLines = 0
         metadataLabel.translatesAutoresizingMaskIntoConstraints = false
     
