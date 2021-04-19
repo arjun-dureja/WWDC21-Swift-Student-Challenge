@@ -1,12 +1,14 @@
 import UIKit
 import PlaygroundSupport
 
+// Fifth Screen
 public class GasFeesViewController: UIViewController {
     var gasTitle: UILabel!
     var nextButton: NextButton!
     var gasDescription: UILabel!
     var payFeesButton: NFTButton!
     var gasFeesProgressView: NFTProgressView!
+    
     var selectedEmoji = ""
     var tokenName = ""
     var tokenSymbol = ""

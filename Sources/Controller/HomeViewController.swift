@@ -1,6 +1,7 @@
 import UIKit
 import PlaygroundSupport
 
+// First Screen
 public class HomeViewController: UIViewController {
     var nftTitle: UILabel!
     var nextButton: NextButton!

@@ -1,6 +1,7 @@
 import UIKit
 import PlaygroundSupport
 
+// Second Screen
 public class ETHSmartContractViewController: UIViewController {
     var ethTitle: UILabel!
     var nextButton: NextButton!

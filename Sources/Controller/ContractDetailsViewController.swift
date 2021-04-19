@@ -1,6 +1,7 @@
 import UIKit
 import PlaygroundSupport
 
+// Fourth Screen
 public class ContractDetailsViewController: UIViewController {
     var contractTitle: UILabel!
     var nextButton: NextButton!
@@ -22,6 +23,7 @@ public class ContractDetailsViewController: UIViewController {
         style()
         layout()
         
+        // Hide keyboard when user taps anywhere on the screen
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         self.view.addGestureRecognizer(tapGesture)
     }
@@ -141,6 +143,7 @@ public class ContractDetailsViewController: UIViewController {
         ])
     }
     
+    // Update metadata every time the textfield changes
     @objc func textFieldDidChange(_ textField: UITextField) {
         metadataLabel.text = """
             {
@@ -182,6 +185,7 @@ public class ContractDetailsViewController: UIViewController {
         createContractButton.backgroundColor = .buttonColor
     }
     
+    // Validate that all sections are filled out before moving on
     func validateInput() -> Bool {
         return (tokenName.text?.count)! > 0 &&
             (tokenSymbol.text?.count)! > 0 &&
@@ -195,11 +199,14 @@ public class ContractDetailsViewController: UIViewController {
             present(ac, animated: true)
             return
         }
+        
         createContractButton.isUserInteractionEnabled = false
         createContractButton.backgroundColor = .gray
         tokenName.isUserInteractionEnabled = false
         tokenSymbol.isUserInteractionEnabled = false
         self.contractProgressView.animate(from: 0, to: 0.95, duration: 5)
+        
+        // Wait 0.5 seconds after the animation to continue
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) {
             self.contractProgressView.progressTintColor = .errorRed
             self.contractProgressView.progressLabel.text = "Stop! You must pay gas fees to continue..."

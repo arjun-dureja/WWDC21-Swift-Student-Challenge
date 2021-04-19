@@ -76,6 +76,7 @@ public class NFTCard: UIView {
         ])
     }
     
+    // 3D UIView Animation 
     @objc func animate() {
         UIView.animate(withDuration: 3, animations: {
             self.layer.transform = CATransform3DMakeRotation(25*CGFloat(Double.pi/180), 1.0, -1.0, 0.0)

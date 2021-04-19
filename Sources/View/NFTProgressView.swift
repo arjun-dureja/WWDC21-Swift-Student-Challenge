@@ -30,6 +30,7 @@ public class NFTProgressView: UIProgressView {
         progressLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12).isActive = true
     }
     
+    // Animate the progress view filling up at a constant rate
     public func animate(from startingVal: Int, to value: Float, duration: Double) {
         self.endVal = Int(value*100)
         self.currentProgress = startingVal
@@ -43,6 +44,7 @@ public class NFTProgressView: UIProgressView {
         }
     }
     
+    // Animate the text inside of the progress bar
     @objc func updateProgressLabel() {
         currentProgress += 1
         self.progressLabel.text = "\(currentProgress)%"

@@ -39,4 +39,6 @@ extension UIColor {
     static var metadataColor: UIColor { return UIColor(red: 113/255, green: 206/255, blue: 154/255, alpha: 1) }
     static var errorRed: UIColor { return UIColor(red: 111/255, green: 2/255, blue: 10/255, alpha: 1) }
     static var cardColor: UIColor { return UIColor(red: 77/255, green: 47/255, blue: 202/255, alpha: 1) }
+    static var startGradient: UIColor { return UIColor(red: 19/255, green: 44/255, blue: 173/255, alpha: 1) }
+    static var endGradient: UIColor { return UIColor(red: 137/255, green: 97/255, blue: 250/255, alpha: 1) }
 }

@@ -1,6 +1,7 @@
 import UIKit
 import PlaygroundSupport
 
+// Third Screen
 public class NFTSelectionViewController: UIViewController {
     var nftTitle: UILabel!
     var nextButton: NextButton!
@@ -32,6 +33,7 @@ public class NFTSelectionViewController: UIViewController {
         nftDescription.textColor = .paragraphColor
         nftDescription.translatesAutoresizingMaskIntoConstraints = false
         
+        // Create 5 emojis to choose from
         for i in 0..<5 {
             let emoji = UIButton()
             emoji.tag = i
@@ -47,6 +49,7 @@ public class NFTSelectionViewController: UIViewController {
         emojis[3].setTitle("🏀",  for: .normal)
         emojis[4].setTitle("👽",  for: .normal)
         
+        // Add emojis to a stackview
         emojiStackView = UIStackView(arrangedSubviews: emojis)
         emojiStackView.axis = .horizontal
         emojiStackView.distribution = .equalSpacing
@@ -81,6 +84,7 @@ public class NFTSelectionViewController: UIViewController {
         ])
     }
     
+    // Handle pressing on an emoji - animate scale
     @objc func emojiPressed(sender: UIButton) {
         selectedEmoji = emojis[sender.tag].titleLabel?.text
         
@@ -96,6 +100,7 @@ public class NFTSelectionViewController: UIViewController {
             }
         }
         
+        // Only start animating the first time the user selects an emoji
         if !nextButton.isUserInteractionEnabled {
             self.nextButton.startAnimating()
         }
