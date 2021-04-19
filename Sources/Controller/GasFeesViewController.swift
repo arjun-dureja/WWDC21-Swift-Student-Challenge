@@ -85,7 +85,7 @@ public class GasFeesViewController: UIViewController {
     }
     
     @objc func nextPressed() {
-        let vc = NFTSelectionViewController()
+        let vc = EndViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
