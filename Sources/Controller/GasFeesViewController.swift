@@ -8,6 +8,8 @@ public class GasFeesViewController: UIViewController {
     var payFeesButton: NFTButton!
     var gasFeesProgressView: NFTProgressView!
     var selectedEmoji = ""
+    var tokenName = ""
+    var tokenSymbol = ""
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,6 +88,9 @@ public class GasFeesViewController: UIViewController {
     
     @objc func nextPressed() {
         let vc = EndViewController()
+        vc.selectedEmoji = self.selectedEmoji
+        vc.tokenName = self.tokenName
+        vc.tokenSymbol = self.tokenSymbol
         navigationController?.pushViewController(vc, animated: true)
     }
     

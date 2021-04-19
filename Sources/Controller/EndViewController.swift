@@ -5,6 +5,9 @@ public class EndViewController: UIViewController {
     var endTitle: UILabel!
     var endDescription: UILabel!
     var cardView: NFTCard!
+    var selectedEmoji = ""
+    var tokenName = ""
+    var tokenSymbol = ""
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +33,9 @@ public class EndViewController: UIViewController {
         endDescription.translatesAutoresizingMaskIntoConstraints = false
         
         cardView = NFTCard()
-        
+        cardView.emojiLabel.text = self.selectedEmoji
+        cardView.nameLabel.text = "Name: \(self.tokenName)"
+        cardView.symbolLabel.text = "Symbol: \(self.tokenSymbol)"
     }
     
     public override func viewDidLayoutSubviews() {

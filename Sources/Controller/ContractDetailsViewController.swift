@@ -211,6 +211,8 @@ public class ContractDetailsViewController: UIViewController {
     @objc func nextPressed() {
         let vc = GasFeesViewController()
         vc.selectedEmoji = self.selectedEmoji
+        vc.tokenName = self.tokenName!.text!
+        vc.tokenSymbol = self.tokenSymbol!.text!
         navigationController?.pushViewController(vc, animated: true)
     }
     

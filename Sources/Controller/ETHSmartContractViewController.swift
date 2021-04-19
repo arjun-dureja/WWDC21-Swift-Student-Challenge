@@ -29,7 +29,7 @@ public class ETHSmartContractViewController: UIViewController {
         ethDescription.textColor = .paragraphColor
         ethDescription.translatesAutoresizingMaskIntoConstraints = false
         
-        nextButton = NextButton(frame: .zero, animationDelay: 10)
+        nextButton = NextButton(frame: .zero, animationDelay: 25)
         nextButton.addTarget(self, action: #selector(nextPressed), for: .touchUpInside)
     }
     

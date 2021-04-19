@@ -24,7 +24,7 @@ public enum StringConstants {
         Unfortunately, minting an NFT is not free. Since the Smart Contract is stored directly on the blockchain, there is a fee you need to pay for the computational power. The amount of computation needed is called "gas". The price for gas varies depending on the current traffic on the blockchain. As of April 2021, it could cost as much as $1000 to create a single Smart Contract! The price is increasing every day as NFTs become more popular. There are clever solutions to this problem however, such as using a different blockchain, or only storing a URL to the NFT rather than the whole NFT itself so that less gas is needed.\n\nThe fees are paid in Ethereum using a wallet of your choice - we will be using a simulated one. Please tap the button below to pay the fees and deploy the contract.
         """
     static let endDescription = """
-        You have successfully minted your own NFT! If it was on the real blockchain, people would now be able to lookup your NFT and see that it belongs to you. You would also be able to list it for sale on various websites at a price of your choice. Thanks to the Smart Contract, the ownership of the NFT can be easily transfered to anyone else.\n\nThank you for viewing my Playground.\nI hope you learned something new from it. 
+        You have successfully minted your own NFT! If it was on the real blockchain, people would now be able to lookup your NFT and see that it belongs to you. You would also be able to list it for sale on various websites at a price of your choice. Thanks to the Smart Contract, the ownership of the NFT can be easily transfered to anyone else.\n\nThank you for viewing my Playground;\nI hope you learned something new!\n\n-Arjun Dureja
         """
 }
 

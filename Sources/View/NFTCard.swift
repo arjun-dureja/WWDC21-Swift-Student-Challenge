@@ -2,7 +2,6 @@ import PlaygroundSupport
 import UIKit
 
 public class NFTCard: UIView {
-    var cardTitle: UILabel!
     var emojiLabel: UILabel!
     var nameLabel: UILabel!
     var symbolLabel: UILabel!
@@ -30,24 +29,21 @@ public class NFTCard: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
 
         emojiLabel = UILabel()
-        emojiLabel.text = "🏀"
         emojiLabel.font = UIFont.systemFont(ofSize: 80)
         emojiLabel.translatesAutoresizingMaskIntoConstraints = false
         
         nameLabel = UILabel()
-        nameLabel.text = "Name: Basketball"
         nameLabel.font = UIFont.systemFont(ofSize: 16)
         nameLabel.textColor = UIColor.white.withAlphaComponent(0.7)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         symbolLabel = UILabel()
-        symbolLabel.text = "Symbol: WWDC"
         symbolLabel.textColor = UIColor.white.withAlphaComponent(0.7)
         symbolLabel.font = UIFont.systemFont(ofSize: 16)
         symbolLabel.translatesAutoresizingMaskIntoConstraints = false
         
         idLabel = UILabel()
-        idLabel.text = "ID: 23"
+        idLabel.text = "ID: 24"
         idLabel.textColor = UIColor.white.withAlphaComponent(0.7)
         idLabel.font = UIFont.systemFont(ofSize: 16)
         idLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +72,7 @@ public class NFTCard: UIView {
             detailsStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             detailsStackView.topAnchor.constraint(equalTo: emojiLabel.bottomAnchor, constant: 32),
             detailsStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
-            detailsStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -32),
+            detailsStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
         ])
     }
     

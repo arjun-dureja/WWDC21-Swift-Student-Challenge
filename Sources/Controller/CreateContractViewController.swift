@@ -38,7 +38,7 @@ public class CreateContractViewController: UIViewController {
         codeImage.layer.masksToBounds = true
         codeImage.translatesAutoresizingMaskIntoConstraints = false
         
-        nextButton = NextButton(frame: .zero, animationDelay: 10)
+        nextButton = NextButton(frame: .zero, animationDelay: 15)
         nextButton.addTarget(self, action: #selector(nextPressed), for: .touchUpInside)
     }
     
